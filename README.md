@@ -28,6 +28,8 @@ I only managed to crunch up to 6 digits and then had to turn to a [z1d.large (~$
 It did crunch 7 digits and only took 5 minutes. 
 
 ## Results (so far)
+The important bit is the "most common digit" between each iteration. For 4 digits it is the 6174 constant.
+
 Given than the algorithm is a recursive one, I consider a "loop" to be each time the function is called
 with a given number. The numbers on the right represent the total numbers in the range that loop the amount of times on the left side.
 
