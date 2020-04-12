@@ -2,30 +2,24 @@
 # author @ github.com/j-000
 import json
 from collections import Counter
+import sys
 import tqdm
 
 
 seen = set()
-seenfreq = dict()
+seen_freq = dict()
+all_seen_sets = list()
 
 
-master = list()
-
-
-def kc(n, loop=0):
-    # if loop == 0:
-    #     print(f'Starting with {n}')
-    # if the number is 6174 or if the number contains only 1 digit
-    # then it is game over
+def kaprekar_constant(n, loop=0):
     if len(set(str(n))) == 1 or n in seen:
         # print(f'\tEnded with {loop} loops.')
         for p in seen:
-            if str(p) in seenfreq:
-                seenfreq[str(p)] += 1
+            if str(p) in seen_freq:
+                seen_freq[str(p)] += 1
             else:
-                seenfreq[str(p)] = 1
-
-        master.append(list(seen))
+                seen_freq[str(p)] = 1
+        all_seen_sets.append(list(seen))
         seen.clear()
         return loop
     else:
@@ -34,28 +28,32 @@ def kc(n, loop=0):
         b = int(''.join(sorted(str(a))))
         c = a - b
         # print(f'\t{a} - {b} = {c}')
-        return kc(c, loop=loop+1)
+        return kaprekar_constant(c, loop=loop+1)
 
 
-freq = dict()
+def main(_min, _max):
+    loop_freq = dict()
+
+    for i in tqdm.tqdm(range(_min, _max)):
+        r = kaprekar_constant(i)
+        if r in loop_freq:
+            loop_freq[r] += 1
+        else:
+            loop_freq.update({r: 1})
+
+    sorted_loop_freq = dict(sorted(loop_freq.items(), key=lambda x: x[0]))
+    print(json.dumps(sorted_loop_freq, indent=4))
+
+    frequency_counter = Counter([i for x in all_seen_sets for i in x])
+    first_most_common = frequency_counter.most_common(1)[0]
+    first_most_common_perc = round(
+        ((first_most_common[1] / (_max - _min)) * 100), 2)
+    print(f'The most common digit is {first_most_common[0]} at '
+          f'{first_most_common[1]}/{_max - _min} or '
+          f'{first_most_common_perc}%.')
+
 
 if __name__ == '__main__':
-    _min = 1111111
-    _max = 10000000
+    _min, _max = sys.argv[1:3]
+    main(_min=int(_min), _max=int(_max))
 
-    for i in range(_min, _max):
-        r = kc(i)
-        if r in freq:
-            freq[r] += 1
-            # freq[r]['%'] = round((freq[r]['max'] / (_max - _min)) * 100, 2)
-        else:
-            freq.update({r: 1})
-
-    print(json.dumps(dict(sorted(freq.items(), key=lambda x: x[0])), indent=4))
-
-    frequency_counter = Counter([i for x in master for i in x])
-    first_most_common = frequency_counter.most_common(1)[0]
-
-    print(f'The most common digit is {first_most_common[0]} at '
-          f'{first_most_common[1]}/{_max-_min} or '
-          f'{round(((first_most_common[1]/(_max-_min))*100),2)}%.')

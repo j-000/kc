@@ -77,7 +77,7 @@ Loop distribution is:
     "20": 418
 }
 
-7 digits -
+7 digits - The most common digit is 8439552 at 8888768/8888889 or 100.0%.
 Loop distributions is:
 {
     "0": 9,
@@ -97,3 +97,4 @@ Loop distributions is:
     "20": 42876,
     "21": 1708
 }
+
