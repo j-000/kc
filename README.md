@@ -97,7 +97,7 @@ etc..
 
 
 ## Contribute
-Pull requests welcome. 
+Pull requests welcome. [Check issues](https://github.com/j-000/kc/issues) for ideas to help out.
 
 ## Why?
 Bored of this quarantine and as Professor Roger Bowley put it in the video 
