@@ -69,7 +69,7 @@ The only depency is the tqdm library to provide a visual clue (progress bar) of 
 
 ## Usage
 ```text
-git clone https://github.com/tqdm/tqdm.git
+git clone https://github.com/j-000/kc.git
 python kc.py 111 1000
 
 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 889/889 [00:00<00:00, 112838.14it/s]
