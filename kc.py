@@ -42,6 +42,7 @@ def main(_min, _max):
             loop_freq.update({r: 1})
 
     sorted_loop_freq = dict(sorted(loop_freq.items(), key=lambda x: x[0]))
+    print('Loop distribution:')
     print(json.dumps(sorted_loop_freq, indent=4))
 
     frequency_counter = Counter([i for x in all_seen_sets for i in x])
