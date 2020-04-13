@@ -11,7 +11,7 @@
 +------------+-----------+-------+
 For the range (11, 100), out of 89 iterations, the number 45 appears 58 times or 65.17% of the time.
 The most common number (45), finishes in 1 loop(s).
-
+    #1) 45 - 54 = 9
 
 3 digits
 +------------+-----------+-------+
@@ -27,7 +27,7 @@ The most common number (45), finishes in 1 loop(s).
 +------------+-----------+-------+
 For the range (111, 1000), out of 889 iterations, the number 495 appears 832 times or 93.59% of the time.
 The most common number (495), finishes in 1 loop(s).
-
+    #1) 954 - 459 = 495
 
 4 digit
 +------------+-----------+-------+
@@ -45,7 +45,7 @@ The most common number (495), finishes in 1 loop(s).
 +------------+-----------+-------+
 For the range (1111, 10000), out of 8889 iterations, the number 6174 appears 8816 times or 99.18% of the time.
 The most common number (6174), finishes in 1 loop(s).
-
+    #1) 7641 - 1467 = 6174
 
 5 digit
 +------------+-----------+-------+
@@ -65,6 +65,10 @@ The most common number (6174), finishes in 1 loop(s).
 +------------+-----------+-------+
 For the range (11111, 100000), out of 88889 iterations, the number 63954 appears 43267 times or 48.68% of the time.
 The most common number (63954), finishes in 4 loop(s).
+    #1) 96543 - 34569 = 61974
+	#2) 97641 - 14679 = 82962
+	#3) 98622 - 22689 = 75933
+	#4) 97533 - 33579 = 63954
 
 
 6 digits
@@ -94,26 +98,44 @@ The most common number (63954), finishes in 4 loop(s).
 +------------+-----------+-------+
 For the range (111111, 1000000), out of 888889 iterations, the number 851742 appears 831491 times or 93.54% of the time.
 The most common number (851742), finishes in 7 loop(s).
+    #1) 875421 - 124578 = 750843
+	#2) 875430 - 34578 = 840852
+	#3) 885420 - 24588 = 860832
+	#4) 886320 - 23688 = 862632
+	#5) 866322 - 223668 = 642654
+	#6) 665442 - 244566 = 420876
+	#7) 876420 - 24678 = 851742
 
+7 digits
++------------+-----------+-------+
+| Loop count | Frequency |   %   |
++------------+-----------+-------+
+|     0      |     9     |  0.0  |
+|     1      |    112    |  0.0  |
+|     8      |     8     |  0.0  |
+|     9      |   757694  |  8.52 |
+|     10     |   820280  |  9.23 |
+|     11     |   826159  |  9.29 |
+|     12     |   856594  |  9.64 |
+|     13     |   733850  |  8.26 |
+|     14     |  1548694  | 17.42 |
+|     15     |  1688786  |  19.0 |
+|     16     |   645429  |  7.26 |
+|     17     |   581241  |  6.54 |
+|     18     |   180962  |  2.04 |
+|     19     |   204487  |  2.3  |
+|     20     |   42876   |  0.48 |
+|     21     |    1708   |  0.02 |
++------------+-----------+-------+
+For the range (1111111, 10000000), out of 8888889 iterations, the number 8429652 appears 8888768 times or 100.0% of the time.
+The most common number (8429652), finishes in 8 loop(s).
+    #1) 9865422 - 2245689 = 7619733
+    #2) 9776331 - 1336779 = 8439552
+    #3) 9855432 - 2345589 = 7509843
+    #4) 9875430 - 345789 = 9529641
+    #5) 9965421 - 1245699 = 8719722
+    #6) 9877221 - 1227789 = 8649432
+    #7) 9864432 - 2344689 = 7519743
+    #8) 9775431 - 1345779 = 8429652
 
-7 digits - The most common digit is 8439552 at 8888768/8888889 or 100.0%.
-Loop distributions is:
-{
-    "0": 9,
-    "1": 112,
-    "8": 8,
-    "9": 757694,
-    "10": 820280,
-    "11": 826159,
-    "12": 856594,
-    "13": 733850,
-    "14": 1548694,
-    "15": 1688786,
-    "16": 645429,
-    "17": 581241,
-    "18": 180962,
-    "19": 204487,
-    "20": 42876,
-    "21": 1708
-}
 
