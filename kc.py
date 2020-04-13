@@ -1,10 +1,12 @@
 #! /usr/bin/env python
 # author @ github.com/j-000
-from tqdm import tqdm
-from kaprekar import Kaprekar
-from collections import Counter
-from prettytable import PrettyTable
 import argparse
+from collections import Counter
+
+from tqdm import tqdm
+from prettytable import PrettyTable
+
+from kaprekar import Kaprekar
 
 
 def main(_min, _max):
@@ -45,15 +47,16 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', help='One single integer, a range or multiple.',
                         nargs='+', type=int, required=True)
-    parser.add_argument('-wf', help='Write results to file.',
+    parser.add_argument('-wf', help='Write results to file flag.',
                         required=False, action='store_true')
     parser.add_argument('-pi', help='Print info.', action='store_false')
+    parser.add_argument('-mp', help='Multiprocessing flag.', required=False,
+                        action='store_true')
     args = parser.parse_args()
-
     if len(args.i) == 2 and (args.i[0] < args.i[1]):
         main(*args.i)
     else:
         for n in args.i:
-            k = Kaprekar(n)
+            kc = Kaprekar(n)
             if args.pi:
-                print(k)
+                print(kc)
