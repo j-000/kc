@@ -24,77 +24,56 @@ Kaprekar constants.
 
 ## My approach 
 I am using a very slow 64-bit Acer Laptop with an Intel® Core™ i5-8250U and 8 CPU @ 1.60GHz. Sadly, 
-I only managed to crunch up to 6 digits and then had to turn to a [z1d.large (~$0.186$ per Hour)](https://aws.amazon.com/ec2/instance-types/z1d/) memory optimised EC2 instance.
-It did crunch 7 digits and only took 5 minutes. 
+I only managed to crunch up to 6 digits and then had to turn to a [z1d.large](https://aws.amazon.com/ec2/instance-types/z1d/) memory optimised EC2 instance.
+It did crunch 7 digits and only took 5 minutes.
 
 ## Results (so far)
-The important bit is the "most common digit" between each iteration. For 4 digits it is the 6174 constant.
+The important bit is the "most common digit" between each iteration. For 4 digits, the range (1111, 10000), it is the 6174 constant. 
+Also note this constant has the interesting property that if performed the algorithm it loops
+back to itself: 7641 - 1467 = 6174, so it only loops once. In fact 6174 appears on 8816 out of 8889 (99.18%) of the 
+iterations for the range of 4 digits (1111, 10000).
 
-Given than the algorithm is a recursive one, I consider a "loop" to be each time the function is called
-with a given number. The numbers on the right represent the total numbers in the range that loop the amount of times on the left side.
+Similarly, for the range of 6 digits, the number 851742 appears on 831491 out of 888889 (93.54%)
+of the iterations for the range. Sadly, it does not converge to one number like 6174 does when the algoritm 
+is applied to it - but it is still cool!
 
-Given that in the range 111111 to 10000000 there are 9 numbers with only 1 digit (1111111, 2222222, etc), the
-result shows these numbers loop 0 times are they are not valid (1111111 - 1111111 = 0). 
-
-The rest can 
-be read as "there are 8 numbers that loop 8 times until they hit the constant".
 ```text
-7 digits - The most common digit is 8439552 at 8888768/8888889 or 100.0%.
-Loop distributions is:
-{
-    "0": 9,
-    "1": 112,
-    "8": 8,
-    "9": 757694,
-    "10": 820280,
-    "11": 826159,
-    "12": 856594,
-    "13": 733850,
-    "14": 1548694,
-    "15": 1688786,
-    "16": 645429,
-    "17": 581241,
-    "18": 180962,
-    "19": 204487,
-    "20": 42876,
-    "21": 1708
-}
+#1) 875421 - 124578 = 750843
+#2) 875430 - 34578 = 840852
+#3) 885420 - 24588 = 860832
+#4) 886320 - 23688 = 862632
+#5) 866322 - 223668 = 642654
+#6) 665442 - 244566 = 420876
+#7) 876420 - 24678 = 851742 <-- back to #1) so this is the end. 
 ```
 
 More results can be found on [info.txt](https://github.com/j-000/kc/blob/master/info.txt).
 
 ## Dependencies
-The only depency is the tqdm library to provide a visual clue (progress bar) of the iteration.
 - [tqdm](https://github.com/tqdm/tqdm) - `pip install tqdm` to install.
+- [prettytable](https://github.com/jazzband/prettytable) - `pip install prettytable` to install.
 
 ## Usage
 ```text
 git clone https://github.com/j-000/kc.git
 python kc.py 111 1000
 
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 889/889 [00:00<00:00, 112838.14it/s]
-Loop distribution:
-{
-    "0": 9,
-    "1": 49,
-    "2": 137,
-    "3": 130,
-    "4": 244,
-    "5": 196,
-    "6": 124
-}
-The most common digit is 495 at 832/889 or 93.59%.
+Starting with range (111, 1000) of 889 iterations.
+100%|██████████| 889/889 [00:00<00:00, 81799.23it/s]
++------------+-----------+-------+
+| Loop count | Frequency |   %   |
++------------+-----------+-------+
+|     0      |     9     |  1.01 |
+|     1      |     49    |  5.51 |
+|     2      |    137    | 15.41 |
+|     3      |    130    | 14.62 |
+|     4      |    244    | 27.45 |
+|     5      |    196    | 22.05 |
+|     6      |    124    | 13.95 |
++------------+-----------+-------+
+For the range (111, 1000), out of 889 iterations, the number 495 appears 832 times or 93.59% of the time.
+The most common number (495), finishes in 1 loop(s).
 ```
-
-The ranges must be 111...X to 100...X. 
-
-11 to 100
-
-111 to 1000
-
-1111 to 10000
-etc..
-
 
 ## Contribute
 Pull requests welcome. [Check issues](https://github.com/j-000/kc/issues) for ideas to help out.
